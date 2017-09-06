@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc75f3ad-cbc2-45b4-b303-ef37a478f979" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ResizeUtils.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascade_training/describe.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascade_training/download_datasets.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascade_training/negative_description.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascade_training/positive_description.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascade_training/train.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascade_training/train.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascades/haarcascade_frontalcatface.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascades/haarcascade_frontalcatface_extended.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascades/haarcascade_frontalface_alt.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascades/lbpcascade_frontalcatface.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cascades/lbpcascade_frontalface.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BinasciiUtils.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.ME" afterPath="$PROJECT_DIR$/README.ME" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ResizeUtils.py" afterPath="$PROJECT_DIR$/ResizeUtils.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -27,21 +16,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="README.ME" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.ME">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="44">
-              <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResizeUtils.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResizeUtils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ResizeUtils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="29" column="58" lean-forward="false" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+            <state relative-caret-position="352">
+              <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BinasciiUtils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/BinasciiUtils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -127,6 +128,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -134,8 +142,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.ME" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/ResizeUtils.py" />
+        <option value="$PROJECT_DIR$/cascades/BinasciiUtils.py" />
+        <option value="$PROJECT_DIR$/BinasciiUtils.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -168,11 +178,6 @@
               <item name="AngoraBlue" type="b2602c69:ProjectViewProjectNode" />
               <item name="AngoraBlue" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="AngoraBlue" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AngoraBlue" type="462c0819:PsiDirectoryNode" />
-              <item name="ans" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -181,6 +186,9 @@
     </panes>
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -246,14 +254,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -346,11 +346,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ResizeUtils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="58" lean-forward="false" selection-start-line="29" selection-start-column="58" selection-end-line="29" selection-end-column="58" />
+        <state relative-caret-position="352">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BinasciiUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="7" lean-forward="false" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>

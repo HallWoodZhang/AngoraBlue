@@ -2,7 +2,7 @@ import numpy
 import cv2
 
 
-def cvResizeAspectFill(src, maxSize, upInterpolation=cv2.INTER_LANCZOS4, downInterpolation=cv2.INTER_AREA):
+def cvResizeAspectFill(src, maxSize, upInterpolation = cv2.INTER_LANCZOS4, downInterpolation = cv2.INTER_AREA):
     h, w = src.shape[:2]
     if w > h:
         if w > maxSize:
@@ -18,7 +18,7 @@ def cvResizeAspectFill(src, maxSize, upInterpolation=cv2.INTER_LANCZOS4, downInt
             interpolation = upInterpolation
         w = int(maxSize * w / float(h))
         h = maxSize
-    dst = cv2.resize(src, (w, h), interpolation=interpolation)
+    dst = cv2.resize(src, (w, h), interpolation = interpolation)
     return dst
 
 def cvResizeCapture(capture, preferredSize):
@@ -27,7 +27,7 @@ def cvResizeCapture(capture, preferredSize):
     successW = capture.set(cv2.CAP_PROP_FRAME_WIDTH, w)
     successH = capture.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
     if successW and successH:
-        # The requested dimensions were successfully set. 
+        # The requested dimensions were successfully set.
         # Return the requested dimensions.
         return preferredSize
     # The requested dimensions might not have been set.
