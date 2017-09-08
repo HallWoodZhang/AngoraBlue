@@ -6,15 +6,18 @@ import PyInstallerUtils
 def main():
     app = wx.App()
     recognizerPath = PyInstallerUtils.resourcePath(
-            'recognizers/lbph_human_faces.xml')
+            'recognizers/lbph_human_faces.xml'
+    )
     cascadePath = PyInstallerUtils.resourcePath(
             # Uncomment the next argument for LBP.
             #'cascades/lbpcascade_frontalface.xml')
             # Uncomment the next argument for Haar.
-            'cascades/haarcascade_frontalface_alt.xml')
+            'cascades/haarcascade_frontalface_alt.xml'
+    )
     interactiveRecognizer = InteractiveRecognizer(
             recognizerPath, cascadePath,
-            title='Interactive Human Face Recognizer')
+            title='Interactive Human Face Recognizer'
+    )
     interactiveRecognizer.Show()
     app.MainLoop()
 
