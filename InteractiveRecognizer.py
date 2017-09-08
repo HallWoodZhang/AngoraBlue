@@ -82,7 +82,7 @@ class InteractiveRecognizer(wx.Frame):
 
         # init gui tools
         self._staticBitmap = wx.StaticBitmap(self, size = size)
-        self._showImag(None)
+        self._showImage(None)
 
         self._referenceTextCtrl = wx.TextCtrl(self, style = wx.TE_PROCESS_ENTER)
         self._referenceTextCtrl.SetMaxLength(4)
@@ -131,4 +131,120 @@ class InteractiveRecognizer(wx.Frame):
         self._captrueThread.start()
 
         # end __init__
-        
+
+    # action listeners
+    def _onCloseWindow(self, event):
+        self._running = False
+        self._captrueThread.join()
+        if self._recognizerTrained:
+            modelDir = os.path.dirname(self._recognizerPath)
+            if not os.path.isdir(modelDir):
+                os.makedirs(modelDir)
+            self._recognizer.save(self._recognizerPath)
+        self.Destroy()
+
+    def _onQuitCommand(self, event):
+        self.Close()
+
+    def _onReferenceTextCtrlKeyUp(self, event):
+        self._enableOrDisableUpdateModelButton()
+
+    def _updateModel(self, event):
+        labelAsStr = self._referenceTextCtrl.GetValue()
+        labelAsInt = BinasciiUtils.fourCharToInt(labelAsStr)
+        src = [self._currDetectedObject]
+        labels = numpy.array([labelAsInt])
+        if self._recognizerTrained:
+            self._recognizer.update(src, labels)
+        else:
+            self._recognizer.train(src, labels)
+            self._recognizerTrained = True
+            self._clearModelButton.Enable()
+
+    def _clearModel(self, event = None):
+        self._recognizerTrained = False
+        self._clearModelButton.Disable()
+        if os.path.isfile(self._recognizerPath):
+            os.remove(self._recognizerPath)
+        self._recognizer = cv2.face.createLBPHFaceRecognizer()
+
+    def _runCaptureLoop(self):
+        while self._running:
+            success, image = self._captrue.read()
+            if image is not None:
+                self._detectAndRecognize(image)
+                if (self.mirrored):
+                    image[:] = numpy.fliplr(image)
+            wx.CallAfter(self._showImage, image)
+
+    def _detectAndRecognize(self, image):
+        grayImage = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        equalizedGrayImage = cv2.equalizeHist(grayImage)
+        rects = self._detector.detectMutiscale(
+            equalizedGrayImage, scaleFactor = self._scaleFactor,
+            minNeighbors = self._minNeighbors,
+            minSize = self._minSize, flags = self._flags
+        )
+
+        for x, y, w, h in rects:
+            cv2.rectangle(image, (x, y), (x + w, y + h), self._rectColor, 1)
+        if len(rects) > 0:
+            x, y, w, h = rects[0]
+            self._currDetectedObject = cv2.equalizeHist(
+                    grayImage[y:y+h, x:x+w])
+            if self._recognizerTrained:
+                try:
+                    labelAsInt, distance = self._recognizer.predict(
+                            self._currDetectedObject)
+                    labelAsStr = BinasciiUtils.intToFourChar(labelAsInt)
+                    self._showMessage(
+                            'This looks most like %s.\n'
+                            'The distance is %.0f.' % \
+                            (labelAsStr, distance))
+                except cv2.error:
+                    print >> sys.stderr, \
+                            'Recreating model due to error.'
+                    self._clearModel()
+            else:
+                self._showInstructions()
+        else:
+            self._currDetectedObject = None
+            if self._recognizerTrained:
+                self._clearMessage()
+            else:
+                self._showInstructions()
+
+        self._enableOrDisableUpdateModelButton()
+        # end _detectAndRecognize
+
+    def _enableOrDisableUpdateModelButton(self):
+        labelAsStr = self._referenceTextCtrl.GetValue()
+        if len(labelAsStr) < 1 or \
+                    self._currDetectedObject is None:
+            self._updateModelButton.Disable()
+        else:
+            self._updateModelButton.Enable()
+
+    def _showImage(self, image):
+        if image is None:
+            # Provide a black bitmap.
+            bitmap = wx.EmptyBitmap(self._imageWidth,
+                                    self._imageHeight)
+        else:
+            # Convert the image to bitmap format.
+            bitmap = WxUtils.wxBitmapFromCvImage(image)
+        # Show the bitmap.
+        self._staticBitmap.SetBitmap(bitmap)
+
+    def _showInstructions(self):
+        self._showMessage(
+            'When an object is highlighted, type its name\n'
+            '(max 4 chars) and click "Add to Model".'
+        )
+
+    def _clearMessage(self):
+         # Insert an endline for consistent spacing.
+        self._showMessage('\n')
+
+    def _showMessage(self, messages):
+        wx.CallAfter(self._predictionStaticText.SetLabel, messages)
